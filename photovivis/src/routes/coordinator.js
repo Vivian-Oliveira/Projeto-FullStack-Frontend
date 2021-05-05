@@ -1,19 +1,19 @@
 export const goToLogin = (history) => {
-    history.pushState("/login")
+    history.push("/login")
 }
 
 export const goToSignup = (history) => {
-    history.pushState("/signup")
+    history.push("/signup")
 }
 
 export const goToImageList = (history) => {
-    history.pushState("/")
+    history.push("/")
 }
 
 export const goToAddImage = (history) => {
-    history.pushState("/create-image")
+    history.push("/create-image")
 }
 
 export const goToDetails = (history, id) => {
-    history.pushState(`/detail/${id}`)
+    history.push(`/detail/${id}`)
 }
