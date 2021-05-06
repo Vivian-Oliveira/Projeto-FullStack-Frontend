@@ -4,8 +4,11 @@ import Button from '@material-ui/core/Button';
 import { StyledToolbar } from "./styled"
 import { goToImageList, goToLogin } from '../../routes/coordinator';
 import { useHistory } from "react-router-dom"
+import useProtectedPage from '../../hooks/useProtectedPage'
+
 
  const Header = () => {
+    useProtectedPage()
     const history = useHistory()
   return (
       <AppBar position="static">

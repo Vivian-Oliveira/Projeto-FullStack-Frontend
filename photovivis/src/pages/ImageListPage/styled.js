@@ -1,4 +1,6 @@
+import style from 'styled-components'
 import { makeStyles } from '@material-ui/core/styles';
+
 
 export const useStyles = makeStyles((theme) => ({
     root: {
@@ -11,16 +13,21 @@ export const useStyles = makeStyles((theme) => ({
     gridList: {
       width: 500,
       height: 450,
-      // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
-      transform: 'translateZ(0)',
-    },
-    titleBar: {
-      background:
-        'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
-        'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
-    },
-    icon: {
-      color: 'white',
     },
   }));
+
+  export const ContainerFeed = style.div`
+  display: block;
+  justify-content: center;
+  padding: 3%;
+  
+  `
+
+
+  export const TitleFeed = style.h1`
+  display: flex;
+  justify-content: center;
+  margin-top: 2vh;
+  margin-bottom: 6vh;
+  `
   

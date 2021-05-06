@@ -11,6 +11,7 @@ import { Grid } from "@material-ui/core";
 import { goToSignup } from "../../routes/coordinator";
 import { useHistory } from "react-router-dom";
 import { useStyles } from "./styled";
+import { signUp } from "../../services/user";
 
 const SignupForm = (props) => {
   const classes = useStyles();
@@ -25,7 +26,8 @@ const SignupForm = (props) => {
 
   const onsubmitForm = (event) => {
     event.preventDefault();
-   clear();
+    console.log(form)
+    signUp(form, clear, history)
   };
 
   return (
@@ -33,9 +35,6 @@ const SignupForm = (props) => {
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
-          {/* <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar> */}
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
