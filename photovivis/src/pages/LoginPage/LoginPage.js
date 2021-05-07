@@ -2,11 +2,11 @@ import React from "react";
 import useUnProtectedPage from "../../hooks/useUnProtectedPage";
 import LoginForm from "./LoginForm";
 
-const LoginPage = (props) => {
+const LoginPage = ({setRightButtonTest}) => {
   useUnProtectedPage()
   return (
     <div>
-      <LoginForm />
+      <LoginForm setRightButtonTest={setRightButtonTest} />
     </div>
   );
 };

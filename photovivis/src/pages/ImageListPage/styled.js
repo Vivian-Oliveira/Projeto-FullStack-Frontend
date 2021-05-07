@@ -1,33 +1,16 @@
-import style from 'styled-components'
-import { makeStyles } from '@material-ui/core/styles';
+import styled from 'styled-components'
+import Fab from '@material-ui/core/Fab'
 
-
-export const useStyles = makeStyles((theme) => ({
-    root: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      justifyContent: 'space-around',
-      overflow: 'hidden',
-      backgroundColor: theme.palette.background.paper,
-    },
-    gridList: {
-      width: 500,
-      height: 450,
-    },
-  }));
-
-  export const ContainerFeed = style.div`
-  display: block;
-  justify-content: center;
-  padding: 3%;
-  
-  `
-
-
-  export const TitleFeed = style.h1`
+export const ImageListContainer = styled.div`
   display: flex;
-  justify-content: center;
-  margin-top: 2vh;
-  margin-bottom: 6vh;
-  `
-  
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 30px;
+`
+
+export const AddImageButton = styled(Fab)`
+  position: fixed !important;
+  right: 20px;
+  bottom: 20px;
+  z-index: 3;
+`

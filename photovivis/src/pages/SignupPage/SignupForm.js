@@ -13,7 +13,7 @@ import { useHistory } from "react-router-dom";
 import { useStyles } from "./styled";
 import { signUp } from "../../services/user";
 
-const SignupForm = (props) => {
+const SignupForm = ({setRightButtonTest}) => {
   const classes = useStyles();
   const history = useHistory();
 
@@ -27,7 +27,7 @@ const SignupForm = (props) => {
   const onsubmitForm = (event) => {
     event.preventDefault();
     console.log(form)
-    signUp(form, clear, history)
+    signUp(form, clear, history, setRightButtonTest)
   };
 
   return (

@@ -13,7 +13,7 @@ import { useHistory } from "react-router-dom";
 import { useStyles } from "./styles";
 import { login } from "../../services/user"
 
-const LoginForm = () => {
+const LoginForm = ({setRightButtonTest}) => {
   const classes = useStyles();
   const history = useHistory();
 
@@ -24,7 +24,7 @@ const LoginForm = () => {
 
   const onsubmitForm = (event) => {
     event.preventDefault();
-    login(form, clear, history)
+    login(form, clear, history, setRightButtonTest)
   };
 
 

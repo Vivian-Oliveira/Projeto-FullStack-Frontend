@@ -1,112 +1,50 @@
 import React from 'react';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import { useStyles } from '../SignupPage/styled';
-import Retro from '../../assets/retro.png'
-import Fundo_login  from '../../assets/fundo_login.jpg'
-import { TitleFeed, ContainerFeed } from './styled';
 import useProtectedPage from '../../hooks/useProtectedPage'
+import useRequestData from '../../hooks/useRequestData';
+import {BASE_URL} from '../../constants/urls'
+import ImageCard from '../../components/ImageCard/ImageCard';
+import { ImageListContainer, AddImageButton } from './styled';
+import { Add } from '@material-ui/icons'
+import { goToAddImage, goToDetails } from '../../routes/coordinator';
+import { useHistory } from 'react-router-dom'
 
 
-
-export const ImageListPage = () => {
+const ImageListPage = () => {
   useProtectedPage()
-  const classes = useStyles();
+  const history = useHistory()
+  const allImages = useRequestData([], `${BASE_URL}/image/all`)
 
-  const tileData = [
-    {
-       img: Retro,
-       title: 'Image',
-       author: 'author',
-       cols: 0,
-     },
-     {
-      img: Fundo_login,
-      title: 'Image',
-      author: 'author',
-      cols: 0,
+  const onclickCard = (id) => {
+    goToDetails(history, id)
+  }
 
-     },
-     {
-      img: Retro,
-      title: 'Image',
-      author: 'author',
-      featured: false,
 
-     },
-     {
-      img: Fundo_login,
-      title: 'Image',
-      author: 'author',
-      featured: false,
-
-     },
-     {
-      img: Retro,
-      title: 'Image',
-      author: 'author',
-      featured: false,
-
-     },
-     {
-      img: Fundo_login,
-      title: 'Image',
-      author: 'author',
-      featured: false,
-
-     },
-     {
-      img: Retro,
-      title: 'Image',
-      author: 'author',
-      featured: false,
-
-     },
-     {
-      img: Fundo_login,
-      title: 'Image',
-      author: 'author',
+  const imageCard = allImages.map((image) => {
+    return(
+      <ImageCard 
+        key={image.id}
+        title={image.subtitle}
+        author={image.author}
+        date={image.date}
+        image={image.file} 
+        onClick={() => onclickCard(image.id)}     
+      />
+    )
+  })
+  
+  return(
+    <ImageListContainer>
+      {imageCard}
+      <AddImageButton
+         color={"primary"} 
+         onClick={() => goToAddImage(history)}
+         >
+           <Add />
+        </AddImageButton> 
+        
       
-     },
-     {
-      img: Retro,
-      title: 'Image',
-      author: 'author',
-      featured: false,
-
-     },
-     {
-      img: Fundo_login,
-      title: 'Image',
-      author: 'author',
-      featured: false,
-
-     },
-     {
-      img: Retro,
-      title: 'Image',
-      author: 'author',
-      cols: 2,
-
-     },
-
-
-   ];
-
-  return (
-    <ContainerFeed>
-       <TitleFeed>Photo-Grid</TitleFeed>
-    <div className={classes.root}>
-      <GridList cellHeight={160} className={classes.gridList} cols={3}>
-        {tileData.map((tile) => (
-          <GridListTile key={tile.img} cols={tile.cols || 1}>
-            <img src={tile.img} alt={tile.title} />
-          </GridListTile>
-        ))}
-      </GridList>
-    </div>
-    </ContainerFeed>
-  );
+    </ImageListContainer>
+  )
 }
 
 export default ImageListPage
